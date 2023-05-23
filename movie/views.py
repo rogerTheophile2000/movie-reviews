@@ -17,7 +17,7 @@ def home(request):
     if searchTerm:
         movies = Movie.objects.filter(title__icontains = searchTerm)
     else:
-        movies = Movie.objects.all()
+        movies = Movie.objects.all().order_by('-title')
     return render(request, 'home.html', {'searchTerm':searchTerm, 'movies': movies})
 
 
